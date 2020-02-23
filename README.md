@@ -88,12 +88,17 @@ fun(name:"hello ")
 
 ``` swift
 var optname: String? = "Optional"
-print(optname) //Print -> Optional("optional")
+print(optname) //Print -> Optional("Optional")
 optname = nil
 print(optname) //Print -> nil
 ```
 
-## 2.5.1 Optional Binding
+- Int!, String! ...
+- 옵셔널이지만 암묵적으로 nil은 없다고 판단한다.
+- 정말 위험하다. 안쓰는걸 추천한다.
+- 만약에 이 옵셔널 변수에 nil이 들어가게 되면 런타임에러가 발생하게 된다.
+
+### 2.5.1 Optional Binding
 - 옵셔널을 사용한 변수는 객체처럼 사용되므로 바로 사용할 수 없다.
 - 대신 강제 추출 하거나, Optional Binding을 이용하여 안의 값을 사용할 수 있다.
 - 둘이 비슷하긴함.
@@ -115,7 +120,7 @@ if let name = yourname {
 }
 ```
 
-## 2.5.2 Optional Chaining
+### 2.5.2 Optional Chaining
 - 옵셔널 바인딩을 할 때 여러 변수를 벗겨내야할 때 복잡해지는 것을 방지할 수 있다.  
 
 Optional Chaining 적용 전
@@ -137,3 +142,44 @@ var addressNumber: Int?
 addressNumber = paul.residence?.address?.buildingNumber?.toInt()
 ```
 
+## 2.6 구조체
+- C에서 사용하는 구조체와 유사함.
+- 구조체 자체적으로 메서드를 가질 수 있음.
+
+``` swift
+struct family {
+    var lastName: String
+    var Number: Int
+    func name() -> String {
+        return self.lastName
+    }
+}
+```
+
+## 2.7 클래스
+- 구조체와 다르게 상속 가능
+- 구조체는 값타입, 클래스는 참조타입
+- deinit 사용 가능
+
+``` swift
+class Person {
+    var name: String
+    var height: Double
+    var weight: Double
+    init(_ name:String, _ h:Double, _ w:Double) {
+        self.name = name
+        self.height=h
+        self.weight=w
+    }
+    deinit {
+        print("Personal Info removed")
+        dump(self)
+    }
+    func all() -> String {
+        return "His Name is \(self.name) and height is \(self.height) and weight is \(self.weight)"
+    }
+}
+
+var Doe: Person = Person("John", 5.7, 150)
+Doe.all()
+```
