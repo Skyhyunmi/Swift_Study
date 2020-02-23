@@ -22,7 +22,7 @@ Swift:
 ```swift
 let const : String = "Constant"
 let const1 = "Constant2"
-let int : Integer = 10
+let int : Int = 10
 ```
 
 ## 2.2 변수
@@ -94,9 +94,19 @@ print(optname) //Print -> nil
 ```
 
 - Int!, String! ...
-- 옵셔널이지만 암묵적으로 nil은 없다고 판단한다.
-- 정말 위험하다. 안쓰는걸 추천한다.
+- 옵셔널이지만 "암묵적으로" nil은 없다고 판단한다.
 - 만약에 이 옵셔널 변수에 nil이 들어가게 되면 런타임에러가 발생하게 된다.
+- 컴파일 에러는 발생하지 않는다. (모든 책임은 코더에게..)
+- 정말 위험하다. 안쓰는걸 추천한다.
+- 반대로 말하면 ?나 !가 없는 변수는 nil이 들어갈 수 없다.
+
+``` swift
+var optname: String!
+
+```
+? : 변수가 nil일 수도 있다!  
+! : 변수가 nil은 아닐걸...?  
+X : 변수는 nil이 절대 아니다!  
 
 ### 2.5.1 Optional Binding
 - 옵셔널을 사용한 변수는 객체처럼 사용되므로 바로 사용할 수 없다.
