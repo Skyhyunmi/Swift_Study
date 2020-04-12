@@ -164,6 +164,7 @@ struct family {
         return self.lastName
     }
 }
+
 ```
 
 ## 2.7 클래스
